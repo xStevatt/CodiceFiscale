@@ -1,7 +1,7 @@
 # CodiceFiscale
 Geratore Codice Fiscale Italiano. Italian Fiscal Code Generator. 
 
-Cognome (tre lettere)
+# Cognome (tre lettere)
 Vengono prese le consonanti del cognome (o dei cognomi, se ve ne è più di uno) nel loro ordine (primo cognome, di seguito il secondo e così via). Se le consonanti sono insufficienti, si prelevano anche le vocali (se sono sufficienti le consonanti si prelevano la prima la seconda e la terza consonante), sempre nel loro ordine e, comunque, le vocali vengono riportate dopo le consonanti (per esempio: Rosi → RSO). Nel caso in cui un cognome abbia meno di tre lettere, la parte di codice viene completata aggiungendo la lettera X (per esempio: Fo → FOX). Per le donne, viene preso in considerazione il solo cognome da nubile.
 
 # Nome (tre lettere)
