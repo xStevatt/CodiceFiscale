@@ -20,3 +20,6 @@ Il codice Belfiore è lo stesso usato per il nuovo Codice catastale.
 
 # Carattere di Controllo 
 A partire dai quindici caratteri alfanumerici ricavati in precedenza, si determina il carattere di controllo (indicato a volte come CIN, Control Internal Number) in base a un particolare algoritmo
+
+
+https://it.wikipedia.org/wiki/Codice_fiscale
