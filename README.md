@@ -1,5 +1,6 @@
 # Codice Fiscale
 Generatore Codice Fiscale Italiano. Italian Fiscal Code Generator.
+CodiceFiscale has no Graphic, while CodiceFiscaleGUI, guess what, has a GUI. 
 
 # Versione Grafica
 【﻿ｐｉｎｋ　ｉｓ　ｂｅｔｔｅｒ】
