@@ -2,6 +2,6 @@
 Geratore Codice Fiscale Italiano. Italian Fiscal Code Generator.
 
 # Versione Grafica
-Pink is better 
+【﻿ｐｉｎｋ　ｉｓ　ｂｅｔｔｅｒ】
 
 ![Screenshot](https://github.com/xStevatt/CodiceFiscale/blob/master/screenshot.PNG)
