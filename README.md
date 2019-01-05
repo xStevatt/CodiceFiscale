@@ -3,7 +3,7 @@ Generatore Codice Fiscale Italiano. Italian Fiscal Code Generator.
 CodiceFiscale has no Graphic, while CodiceFiscaleGUI, guess what, has a GUI. 
 
 # 
->Salva i codici in codicifiscali.txt
+Stores codes in codicifiscali.txt
 
 【﻿ｐｉｎｋ　ｉｓ　ｂｅｔｔｅｒ】
 
