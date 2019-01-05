@@ -4,7 +4,6 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Scanner;   
 import java.util.concurrent.TimeUnit;
-import codiceinverso.*; 
 /**
  *
  * @author Stefano Valloncini
@@ -25,8 +24,7 @@ public class CodiceFiscale
         System.out.println("\nBenvenuto nel calcolatore del codice fiscale.");
         System.out.println("***********************************");
         System.out.println("* " + "1. Calcolare il codice fiscale " + " *");
-        System.out.println("* " + "2. Calcolare il codice inverso " + " *");
-        System.out.println("* " + "3. Copyright                   " + " *");
+        System.out.println("* " + "2. Copyright                   " + " *");
         System.out.println("* " + "0. Terminare il programma " + "      *");
         System.out.println("***********************************");
         
@@ -60,9 +58,6 @@ public class CodiceFiscale
                 CODICEFISCALE.creaOggetti();
                 break; 
             case 2: 
-                System.out.println("Work in Progress...");
-                break; 
-            case 3: 
                 System.out.println("Made by Stefano Valloncini\nAnno Scolastico 2018-2019\nChiunque venga sgamato a copiare da questo programma, verrà diretto in presidenza.");
                 TimeUnit.SECONDS.sleep(5);
                 System.out.println("Capito? :D\n");
