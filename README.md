@@ -1,5 +1,5 @@
 # Codice Fiscale
-Geratore Codice Fiscale Italiano. Italian Fiscal Code Generator.
+Generatore Codice Fiscale Italiano. Italian Fiscal Code Generator.
 
 # Versione Grafica
 【﻿ｐｉｎｋ　ｉｓ　ｂｅｔｔｅｒ】
