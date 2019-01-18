@@ -114,6 +114,7 @@ public class Schermata1 extends JFrame
        
         // codice fiscale
         fieldCodice = new JTextField(20);
+        fieldCodice.setEditable(false); 
         griglia.add(fieldCodice);
         
         griglia1.add(griglia); 
