@@ -8,15 +8,16 @@ import java.util.logging.*;
 
 /**
  *
- * @author xStevatt
+ * @author Stefano Valloncini
  */
+
 public class Schermata1 extends JFrame
 {   
     
     private JLabel labelNome, labelCognome, labelSesso, labelGiorno, labelMese, labelAnno, labelProvincia; 
     private JTextField fieldNome, fieldCognome, fieldGiorno, fieldAnno, fieldCodice, fieldProvincia;
     private JComboBox mesiTendina, sessoTendina;
-    private JButton button1; 
+    private JButton button1, bottonePulizia; 
     
     String[] mesi = {"", "Gennaio", "Febbraio", "Marzo", "Aprile", "Maggio", "Giugno", "Luglio", "Agosto", "Settembre", "Ottobre", "Novembre", "Dicembre"};
     String[] sessi = {"", "M", "F"};
@@ -39,19 +40,25 @@ public class Schermata1 extends JFrame
         JPanel pannello = new JPanel(new BorderLayout()); 
         pannello.setBackground(Color.WHITE);
         
-        // pannello elementi
-        JPanel griglia1 = new JPanel();
-        griglia1.setBackground(Color.WHITE);
-        JPanel griglia = new JPanel(new GridLayout(8, 2, 0, 5));
-        griglia.setBackground(Color.WHITE); 
-        
-        // istruzioni
+        // Crazione del PannelloDescrizione
         JPanel pannelloDescrizione = new JPanel();
         pannelloDescrizione.setBackground(Color.WHITE);
         JLabel descrizione = new JLabel("Benvenuto nel calcolatore del Codice Fiscale!"); 
         descrizione.setFont(new Font("Arial", Font.BOLD + Font.ITALIC, 20));
         descrizione.setForeground(new Color(238, 130, 238));
         pannelloDescrizione.add(descrizione);
+        
+        // Crazione del PannelloCentrale
+        JPanel griglia1 = new JPanel();
+        griglia1.setBackground(Color.WHITE);
+        JPanel griglia = new JPanel(new GridLayout(8, 2, 0, 5));
+        griglia.setBackground(Color.WHITE); 
+        
+        // Creazione del PannelloSottostante
+        JPanel fondo1 = new JPanel();
+        fondo1.setBackground(Color.WHITE);
+        JPanel fondo = new JPanel(new GridLayout(2, 2)); 
+        fondo.setBackground(Color.WHITE);
         
         // inserimento nome
         labelNome = new JLabel("                Nome:"); 
@@ -110,12 +117,13 @@ public class Schermata1 extends JFrame
         
         // bottone per l'ottenimento del codice
         button1 = new JButton("Calcola il codice fiscale!"); 
-        griglia.add(button1); 
        
         // codice fiscale
         fieldCodice = new JTextField(20);
         fieldCodice.setEditable(false); 
-        griglia.add(fieldCodice);
+        
+        bottonePulizia = new JButton("Pulisci"); 
+        
         
         griglia1.add(griglia); 
         
@@ -128,15 +136,17 @@ public class Schermata1 extends JFrame
         event e1 = new event(); 
         button1.addActionListener(e1);
         
-        JPanel fondo1 = new JPanel();
-        fondo1.setBackground(Color.WHITE);
-        JPanel fondo = new JPanel(new GridLayout(2,2));
-        fondo.setBackground(Color.WHITE);
-    
-
+        pulizia e2 = new pulizia(); 
+        bottonePulizia.addActionListener(e2);
+        
+        /*
+        Evento: è in continua attesa che il pulsante venga premuto, in tal momento
+                esso svolge una serie di azioni (pulisce i campi di testo).
+        */
+        
         fondo.add(fieldCodice);
-        fondo.add(button1);
-    
+        fondo.add(button1); 
+        fondo1.add(bottonePulizia); 
         fondo1.add(fondo);
     
         pannello.add(pannelloDescrizione,BorderLayout.NORTH);
@@ -145,7 +155,22 @@ public class Schermata1 extends JFrame
         add(pannello);
   
     }
-        
+    
+    public class pulizia implements ActionListener
+    {
+        public void actionPerformed(ActionEvent e)
+        {
+            fieldNome.setText("");
+            fieldCognome.setText("");
+            fieldProvincia.setText(""); 
+            fieldGiorno.setText("");
+            fieldAnno.setText("");
+            fieldCodice.setText("");
+            sessoTendina.setSelectedIndex(0);
+            mesiTendina.setSelectedIndex(0);
+        }
+    }
+    
     public class event implements ActionListener
     {
         public void actionPerformed(ActionEvent e)
@@ -178,6 +203,7 @@ public class Schermata1 extends JFrame
                     writer.write(nome + " " + cognome + ": " + codicefiscale);
                     writer.newLine();
                     
+                    fieldCodice.setHorizontalAlignment(JTextField.CENTER);
                     fieldCodice.setText(codicefiscale); 
                     fieldCodice.setBackground(new Color(238, 130, 238));
                     
