@@ -3,7 +3,7 @@ import java.awt.*;
 import javax.swing.JFrame;
 
 /**
- * @author xStevatt
+ * @author Stefano Valloncini aka xStevatt
  */
 
 public class CodiceFiscale 
