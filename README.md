@@ -6,4 +6,4 @@ Stores codes in codicifiscali.txt
 
 【﻿ｐｉｎｋ　ｉｓ　ｂｅｔｔｅｒ】
 
-![Screenshot](https://github.com/xStevatt/CodiceFiscale/blob/master/screenshot.PNG)
+![Screenshot](https://github.com/xStevatt/CodiceFiscale/blob/master/CodiceFiscaleGUI.PNG)
