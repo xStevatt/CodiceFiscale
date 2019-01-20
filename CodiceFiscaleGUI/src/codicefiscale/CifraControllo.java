@@ -102,7 +102,7 @@ public class CifraControllo
 			}
 		}
                 
-		for(int i=0;i<char_posPari.length();i++)
+		for(int i = 0 ;i < char_posPari.length(); i++)
                 {
 			switch(char_posPari.charAt(i))
                         {
@@ -180,7 +180,7 @@ public class CifraControllo
                         break;
 			}
 		}
-		switch(counter%26)
+		switch(counter % 26)
                 {
 		case 0: c = "A";
                 break;
