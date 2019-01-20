@@ -187,7 +187,7 @@ public class Schermata1 extends JFrame
             String provincia = fieldProvincia.getText(); 
             String sesso = (String) sessoTendina.getSelectedItem();
             
-            if(nome.length() > 0 && cognome.length() > 0 && giorno.length() > 0 && mese.length() > 0 && anno.length() > 0 && sesso.length() > 0)
+            if(nome.length() > 0 && cognome.length() > 0 && (giorno.length() > 0 && Integer.parseInt(giorno) < 31) && mese.length() > 0 && (anno.length() > 0 && Integer.parseInt(anno) < 2200) && sesso.length() > 0)
             {
                 try 
                 {   
