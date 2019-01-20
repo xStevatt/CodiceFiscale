@@ -22,7 +22,7 @@ public class Schermata1 extends JFrame
     String[] mesi = {"", "Gennaio", "Febbraio", "Marzo", "Aprile", "Maggio", "Giugno", "Luglio", "Agosto", "Settembre", "Ottobre", "Novembre", "Dicembre"};
     String[] sessi = {"", "M", "F"};
     
-    // centra la finestra al momento dell'avvio
+    // centra la finestra nello schermo al momento dell'avvio
     
     public static void centreWindow(Window frame)
     {
@@ -179,13 +179,13 @@ public class Schermata1 extends JFrame
             
             
             // prende i dati dalle caselle di testo
-            String nome = fieldNome.getText(); 
-            String cognome = fieldCognome.getText(); 
-            String giorno = fieldGiorno.getText();
-            String mese = (String) mesiTendina.getSelectedItem(); 
-            String anno = fieldAnno.getText(); 
-            String provincia = fieldProvincia.getText(); 
+            String nome = fieldNome.getText().trim(); 
+            String cognome = fieldCognome.getText().trim(); 
+            String giorno = fieldGiorno.getText().trim();
+            String anno = fieldAnno.getText().trim(); 
+            String provincia = fieldProvincia.getText().trim(); 
             String sesso = (String) sessoTendina.getSelectedItem();
+            String mese = (String) mesiTendina.getSelectedItem(); 
             
             if(nome.length() > 0 && cognome.length() > 0 && (giorno.length() > 0 && Integer.parseInt(giorno) < 31) && mese.length() > 0 && (anno.length() > 0 && Integer.parseInt(anno) < 2200) && sesso.length() > 0)
             {
