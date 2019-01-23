@@ -18,12 +18,14 @@ public class Schermata1 extends JFrame
     private JLabel labelNome, labelCognome, labelSesso, labelGiorno, labelMese, labelAnno, labelProvincia, labelLingua, descrizione; 
     private JTextField fieldNome, fieldCognome, fieldGiorno, fieldAnno, fieldCodice, fieldProvincia;
     private JComboBox mesiTendina, sessoTendina;
-    private JButton button1, bottonePulizia; 
+    private JButton button1, bottonePulizia, close; 
     private JRadioButton linguaIT, linguaEN; 
     
     String[] mesiIt = {"", "Gennaio", "Febbraio", "Marzo", "Aprile", "Maggio", "Giugno", "Luglio", "Agosto", "Settembre", "Ottobre", "Novembre", "Dicembre"};
     String[] mesiEng = {"", "Januray", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"};
-    String[] sessi = {"", "M", "F"};
+    String[] sessiEng = {"", "Male", "Female"};
+    String[] sessiIt = {"", "Maschile", "Femminile"}; 
+    
     
     // centra la finestra nello schermo al momento dell'avvio
     
@@ -34,8 +36,6 @@ public class Schermata1 extends JFrame
         int y = (int) ((dimension.getHeight() - frame.getHeight()) / 2);
         frame.setLocation(x, y);
     }   
-    
-    // costruttore, crea l'interfaccia del
     
     public Schermata1()
     {   
@@ -98,7 +98,7 @@ public class Schermata1 extends JFrame
         labelSesso.setForeground(Color.black);
         griglia.add(labelSesso);
         
-        sessoTendina = new JComboBox(sessi);
+        sessoTendina = new JComboBox();
         griglia.add(sessoTendina);
         
         // inserimento provincia
@@ -132,16 +132,19 @@ public class Schermata1 extends JFrame
         fieldAnno = new JTextField(15); 
         griglia.add(fieldAnno);
         
+        close = new JButton(""); 
+        
         // bottone per l'ottenimento del codice
-        button1 = new JButton("Calcola il codice fiscale!"); 
-       
+        button1 = new JButton(""); 
+        
         // codice fiscale
         fieldCodice = new JTextField(20);
         fieldCodice.setEditable(false); 
         fieldCodice.setBackground(Color.LIGHT_GRAY);
         
-        bottonePulizia = new JButton("Pulisci"); 
+        bottonePulizia = new JButton(""); 
         setLabels("italian");
+            
         
         griglia1.add(griglia); 
         
@@ -159,6 +162,10 @@ public class Schermata1 extends JFrame
         pulizia e2 = new pulizia(); 
         bottonePulizia.addActionListener(e2);
         
+        // bottone che chiude il programma
+        Close e3 = new Close(); 
+        close.addActionListener(e3);
+        
         // selezione della lingua
         LinguaIT italiano = new LinguaIT(); 
         linguaIT.addItemListener(italiano);
@@ -170,6 +177,7 @@ public class Schermata1 extends JFrame
         fondo.add(fieldCodice);
         fondo.add(button1); 
         fondo1.add(bottonePulizia); 
+        fondo1.add(close); 
         fondo1.add(fondo);
     
         pannello.add(pannelloDescrizione,BorderLayout.NORTH);
@@ -179,6 +187,19 @@ public class Schermata1 extends JFrame
   
     }
     
+    private class Close implements ActionListener
+    {
+        public void ActionPerfomed(ActionEvent e)
+        {
+            System.exit(0);
+        }
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        }
+    }
+        
     private void setLabels(String type)
     {   
         descrizione.removeAll();
@@ -204,6 +225,11 @@ public class Schermata1 extends JFrame
                     labelSesso.setText("              Genere: ");
                     labelMese.setText("              Mese: ");
                     bottonePulizia.setText("Pulizia");
+                    close.setText(" Esci  "); 
+                    DefaultComboBoxModel sessoIT = new DefaultComboBoxModel(sessiIt);
+                    sessoTendina.setModel(sessoIT);
+                    DefaultComboBoxModel meseIT = new DefaultComboBoxModel(mesiIt);
+                    mesiTendina.setModel(meseIT);
                     button1.setText("Calcola il codice fiscale!");
                     break; 
                 case "english":
@@ -217,6 +243,11 @@ public class Schermata1 extends JFrame
                     labelSesso.setText("              Gender: ");
                     labelMese.setText("              Month: ");
                     bottonePulizia.setText(" Clean ");
+                    close.setText("Close"); 
+                    DefaultComboBoxModel sessoENG = new DefaultComboBoxModel(sessiEng);
+                    sessoTendina.setModel(sessoENG);
+                    DefaultComboBoxModel meseENG = new DefaultComboBoxModel(mesiEng);
+                    mesiTendina.setModel(meseENG);
                     button1.setText("Calculate the fiscal code!");
                     break; 
             }
