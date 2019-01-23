@@ -2,9 +2,10 @@ package codicefiscale;
 
 /**
  *
- * @author Stefano Valloncini
+ * @author Stefano Valloncini 
  */
 
+// calculates the two digits relative to the birtday of the person
 public class AnnoNascita 
 {   
     public String workOnAnno(String anno_completo)
