@@ -18,7 +18,7 @@ public class Schermata1 extends JFrame
     private JLabel labelNome, labelCognome, labelSesso, labelGiorno, labelMese, labelAnno, labelProvincia, labelLingua, descrizione; 
     private JTextField fieldNome, fieldCognome, fieldGiorno, fieldAnno, fieldCodice, fieldProvincia;
     private JComboBox mesiTendina, sessoTendina;
-    private JButton button1, bottonePulizia, close; 
+    private JButton button1, bottonePulizia, bottoneLista; 
     private JRadioButton linguaIT, linguaEN; 
     
     String[] mesiIt = {"", "Gennaio", "Febbraio", "Marzo", "Aprile", "Maggio", "Giugno", "Luglio", "Agosto", "Settembre", "Ottobre", "Novembre", "Dicembre"};
@@ -132,7 +132,7 @@ public class Schermata1 extends JFrame
         fieldAnno = new JTextField(15); 
         griglia.add(fieldAnno);
         
-        close = new JButton(""); 
+        bottoneLista = new JButton(""); 
         
         // bottone per l'ottenimento del codice
         button1 = new JButton(""); 
@@ -162,9 +162,21 @@ public class Schermata1 extends JFrame
         pulizia e2 = new pulizia(); 
         bottonePulizia.addActionListener(e2);
         
-        // bottone che chiude il programma
-        Close e3 = new Close(); 
-        close.addActionListener(e3);
+        // bottone per la lista
+        bottoneLista.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) 
+            {
+                Lista ls = new Lista();
+                
+                ls.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+                ls.setSize(500, 400);
+                ls.centreWindow(ls);
+                ls.setResizable(false);
+                ls.setTitle("CodiceFiscale | Stefano Valloncini | 4CI - 2018/2019");
+                ls.setVisible(true);
+            }
+        });
+       
         
         // selezione della lingua
         LinguaIT italiano = new LinguaIT(); 
@@ -177,7 +189,7 @@ public class Schermata1 extends JFrame
         fondo.add(fieldCodice);
         fondo.add(button1); 
         fondo1.add(bottonePulizia); 
-        fondo1.add(close); 
+        fondo1.add(bottoneLista); 
         fondo1.add(fondo);
     
         pannello.add(pannelloDescrizione,BorderLayout.NORTH);
@@ -185,19 +197,6 @@ public class Schermata1 extends JFrame
         pannello.add(fondo1, BorderLayout.SOUTH);
         add(pannello);
   
-    }
-    
-    private class Close implements ActionListener
-    {
-        public void ActionPerfomed(ActionEvent e)
-        {
-            System.exit(0);
-        }
-
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-        }
     }
         
     private void setLabels(String type)
@@ -219,13 +218,13 @@ public class Schermata1 extends JFrame
                     setTitle("CodiceFiscale | Stefano Valloncini | 4CI - 2018/2019"); 
                     labelNome.setText("              Nome:");
                     labelCognome.setText("              Cognome:");
-                    labelProvincia.setText("              Provincia: "); 
+                    labelProvincia.setText("              Comune: "); 
                     labelGiorno.setText("              Giorno: ");
                     labelAnno.setText("              Anno: ");
                     labelSesso.setText("              Genere: ");
                     labelMese.setText("              Mese: ");
                     bottonePulizia.setText("Pulizia");
-                    close.setText(" Esci  "); 
+                    bottoneLista.setText(" Lista  "); 
                     DefaultComboBoxModel sessoIT = new DefaultComboBoxModel(sessiIt);
                     sessoTendina.setModel(sessoIT);
                     DefaultComboBoxModel meseIT = new DefaultComboBoxModel(mesiIt);
@@ -237,13 +236,13 @@ public class Schermata1 extends JFrame
                     setTitle("FiscalCode | Stefano Valloncini | 4CI - 2018/2019"); 
                     labelNome.setText("              Name:");
                     labelCognome.setText("              Surname:");
-                    labelProvincia.setText("              Province: "); 
+                    labelProvincia.setText("              City: "); 
                     labelGiorno.setText("              Day: ");
                     labelAnno.setText("              Year: ");
                     labelSesso.setText("              Gender: ");
                     labelMese.setText("              Month: ");
                     bottonePulizia.setText(" Clean ");
-                    close.setText("Close"); 
+                    bottoneLista.setText("List"); 
                     DefaultComboBoxModel sessoENG = new DefaultComboBoxModel(sessiEng);
                     sessoTendina.setModel(sessoENG);
                     DefaultComboBoxModel meseENG = new DefaultComboBoxModel(mesiEng);
@@ -265,6 +264,7 @@ public class Schermata1 extends JFrame
         sessoTendina.setSelectedIndex(0);
         mesiTendina.setSelectedIndex(0);
     }
+    
     
     private class LinguaEN implements ItemListener
     {
