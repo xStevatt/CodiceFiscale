@@ -1,5 +1,4 @@
 package GeneratoreGrafica;
-import java.awt.*; 
 import javax.swing.JFrame;
 
 /**
@@ -13,7 +12,7 @@ public class CodiceFiscale
         Schermata1 gui = new Schermata1(); 
         
         gui.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        gui.setSize(500, 350);
+        gui.setSize(500, 400);
         gui.centreWindow(gui);
         gui.setResizable(false);
         gui.setTitle("CodiceFiscale | Stefano Valloncini | 4CI - 2018/2019");
