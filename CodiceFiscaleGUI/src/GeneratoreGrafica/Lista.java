@@ -1,12 +1,10 @@
 package GeneratoreGrafica;
+
 import java.awt.*; 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.PrintWriter;
+import java.awt.event.*;
+import java.io.*;
 import javax.swing.*; 
-import java.util.Scanner; 
+import java.util.*; 
 import java.util.logging.Level;
 import java.util.logging.Logger;
 /**
@@ -16,6 +14,8 @@ import java.util.logging.Logger;
 public class Lista extends JFrame
 {   
     private JTextArea text; 
+    private String linguaProgramma = ""; 
+    private JLabel titolo; 
     
     public static void centreWindow(Window frame)
     {
@@ -25,8 +25,10 @@ public class Lista extends JFrame
         frame.setLocation(x, y);
     }  
     
-    public Lista() throws FileNotFoundException
+    public Lista(String linguaProgramma) throws FileNotFoundException
     {   
+        this.linguaProgramma = linguaProgramma; 
+        
         JPanel pannelloprincipale = new JPanel(new BorderLayout()); 
         pannelloprincipale.setBackground(new Color(238, 130, 238));
         
@@ -36,7 +38,7 @@ public class Lista extends JFrame
         JPanel lista = new JPanel(new BorderLayout()); 
         lista.setBackground(new Color(238, 130, 238));
         
-        JLabel titolo = new JLabel("Lista dei codici fiscali: "); 
+        titolo = new JLabel("Lista dei codici fiscali: "); 
         titolo.setFont(new Font("Arial", Font.ITALIC + Font.BOLD, 30));
         descrizione.add(titolo); 
         
@@ -52,6 +54,7 @@ public class Lista extends JFrame
                 } catch (FileNotFoundException ex) {
                     Logger.getLogger(Lista.class.getName()).log(Level.SEVERE, null, ex);
                 }
+                
               writer.write("I codici verrano salvati qui: \n");
             }
         });
@@ -69,6 +72,16 @@ public class Lista extends JFrame
         pannelloprincipale.add(descrizione, BorderLayout.NORTH); 
         pannelloprincipale.add(lista, BorderLayout.CENTER);
         add(pannelloprincipale);
+        
+        setLabels();
+    }
+    
+    public void setLabels()
+    {
+        if(linguaProgramma.equalsIgnoreCase("italian"))
+            titolo.setText("Lista dei codici fiscali: ");
+        if(linguaProgramma.equalsIgnoreCase("english"))
+            titolo.setText("List of the Fiscal Codes: ");
     }
     
     public void mostraLista() throws FileNotFoundException
