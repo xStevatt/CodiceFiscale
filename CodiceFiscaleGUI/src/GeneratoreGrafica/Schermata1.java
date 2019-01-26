@@ -20,9 +20,10 @@ public class Schermata1 extends JFrame
     private JComboBox mesiTendina, sessoTendina;
     private JButton button1, bottonePulizia, bottoneLista; 
     private JRadioButton linguaIT, linguaEN; 
+    private String linguaProgramma = ""; 
     
     String[] mesiIt = {"", "Gennaio", "Febbraio", "Marzo", "Aprile", "Maggio", "Giugno", "Luglio", "Agosto", "Settembre", "Ottobre", "Novembre", "Dicembre"};
-    String[] mesiEng = {"", "Januray", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"};
+    String[] mesiEng = {"", "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"};
     String[] sessiEng = {"", "Male", "Female"};
     String[] sessiIt = {"", "Maschile", "Femminile"}; 
     
@@ -166,7 +167,12 @@ public class Schermata1 extends JFrame
         bottoneLista.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) 
             {
-                Lista ls = new Lista();
+                Lista ls = null;
+                try {
+                    ls = new Lista(linguaProgramma);
+                } catch (FileNotFoundException ex) {
+                    Logger.getLogger(Schermata1.class.getName()).log(Level.SEVERE, null, ex);
+                }
                 
                 ls.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
                 ls.setSize(500, 400);
@@ -271,6 +277,7 @@ public class Schermata1 extends JFrame
         public void itemStateChanged(ItemEvent e)
         {
             setLabels("english");
+            linguaProgramma = "english"; 
         }
     }
     
@@ -279,6 +286,7 @@ public class Schermata1 extends JFrame
         public void itemStateChanged(ItemEvent e)
         {
             setLabels("italian");
+            linguaProgramma = "italian"; 
         }
     }
     
@@ -334,6 +342,15 @@ public class Schermata1 extends JFrame
                     Logger.getLogger(Schermata1.class.getName()).log(Level.SEVERE, null, ex);
                 }
 
+            }
+            
+            else if(linguaProgramma.equalsIgnoreCase("english"))
+            {
+                JOptionPane.showMessageDialog(null, "Please insert correct data!");
+            }
+            else
+            {
+                JOptionPane.showMessageDialog(null, "Perfavore inserire i dati corretti!");
             }
         }
     }
