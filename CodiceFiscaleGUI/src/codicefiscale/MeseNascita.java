@@ -10,56 +10,55 @@ import java.util.Scanner;
 
 public class MeseNascita
 {   
-
     public String workOnMese(String mesenascita)
     {   
         String codicefiscale = ""; 
         
-        if(mesenascita.equalsIgnoreCase("Gennaio"))
+        if(mesenascita.equalsIgnoreCase("Gennaio") || mesenascita.equalsIgnoreCase("January"))
         {
             codicefiscale = "A"; 
         }
-        if(mesenascita.equalsIgnoreCase("Febbraio"))
+        if(mesenascita.equalsIgnoreCase("Febbraio") || mesenascita.equalsIgnoreCase("February"))
         {
             codicefiscale = "B"; 
         }
-        if(mesenascita.equalsIgnoreCase("Marzo"))
+        if(mesenascita.equalsIgnoreCase("Marzo") || mesenascita.equalsIgnoreCase("March"))
         {
             codicefiscale = "C"; 
         }
-        if(mesenascita.equalsIgnoreCase("Aprile"))
+        if(mesenascita.equalsIgnoreCase("Aprile") || mesenascita.equalsIgnoreCase("April"))
         {
             codicefiscale = "D"; 
         }
-        if(mesenascita.equalsIgnoreCase("Maggio"))
+        if(mesenascita.equalsIgnoreCase("Maggio") || mesenascita.equalsIgnoreCase("May"))
         {
             codicefiscale = "E"; 
         }
-        if(mesenascita.equalsIgnoreCase("Giugno"))
+        if(mesenascita.equalsIgnoreCase("Giugno") || mesenascita.equalsIgnoreCase("June"))
         {
             codicefiscale = "H"; 
         }
-        if(mesenascita.equalsIgnoreCase("Luglio"))
+        if(mesenascita.equalsIgnoreCase("Luglio") || mesenascita.equalsIgnoreCase("July"))
         {
             codicefiscale = "L";
         }
-        if(mesenascita.equalsIgnoreCase("Agosto"))
+        if(mesenascita.equalsIgnoreCase("Agosto") || mesenascita.equalsIgnoreCase("August"))
         {
             codicefiscale = "M"; 
         }
-        if(mesenascita.equalsIgnoreCase("Settembre"))
+        if(mesenascita.equalsIgnoreCase("Settembre") || mesenascita.equalsIgnoreCase("September"))
         {
             codicefiscale = "P"; 
         }
-        if(mesenascita.equalsIgnoreCase("Ottobre"))
+        if(mesenascita.equalsIgnoreCase("Ottobre") || mesenascita.equalsIgnoreCase("October"))
         {
             codicefiscale = "R"; 
         }
-        if(mesenascita.equalsIgnoreCase("Novembre"))
+        if(mesenascita.equalsIgnoreCase("Novembre") || mesenascita.equalsIgnoreCase("November"))
         {
             codicefiscale = "S"; 
         }
-        if(mesenascita.equalsIgnoreCase("Dicembre"))
+        if(mesenascita.equalsIgnoreCase("Dicembre") || mesenascita.equalsIgnoreCase("December"))
         {
             codicefiscale = "T"; 
         }

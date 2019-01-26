@@ -4,15 +4,16 @@ import java.io.IOException;
 
 /**
  *
- * @author xStevatt
+ * @author Stefano Valloncini aka xStevatt
  */
+
 public class GiornoNascita 
 {
     public String workOnGiorno(String giorno, String sesso) 
     {   
         String codicefiscale = ""; 
         
-        if(sesso.equals("F"))
+        if(sesso.equalsIgnoreCase("Femminile") || sesso.equalsIgnoreCase("Female"))
         {
             int totalegiorni = Integer.parseInt(giorno) + 40; 
             codicefiscale = String.valueOf(totalegiorni); 
