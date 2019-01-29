@@ -15,12 +15,12 @@ import java.util.logging.*;
 public class Schermata1 extends JFrame
 {   
     
-    private JLabel labelNome, labelCognome, labelSesso, labelGiorno, labelMese, labelAnno, labelProvincia, labelLingua, descrizione; 
-    private JTextField fieldNome, fieldCognome, fieldGiorno, fieldAnno, fieldCodice, fieldProvincia;
+    private JLabel labelNome, labelCognome, labelSesso, labelGiorno, labelMese, labelAnno, labelComune, descrizione; 
+    private JTextField fieldNome, fieldCognome, fieldGiorno, fieldAnno, fieldCodice, fieldComune;
     private JComboBox mesiTendina, sessoTendina;
     private JButton button1, bottonePulizia, bottoneLista; 
     private JRadioButton linguaIT, linguaEN; 
-    private String linguaProgramma = ""; 
+    private String linguaProgramma = "italian"; 
     
     String[] mesiIt = {"", "Gennaio", "Febbraio", "Marzo", "Aprile", "Maggio", "Giugno", "Luglio", "Agosto", "Settembre", "Ottobre", "Novembre", "Dicembre"};
     String[] mesiEng = {"", "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"};
@@ -37,6 +37,7 @@ public class Schermata1 extends JFrame
         int y = (int) ((dimension.getHeight() - frame.getHeight()) / 2);
         frame.setLocation(x, y);
     }   
+    
     
     public Schermata1()
     {   
@@ -55,7 +56,7 @@ public class Schermata1 extends JFrame
         // Crazione del PannelloCentrale
         JPanel griglia1 = new JPanel();
         griglia1.setBackground(Color.WHITE);
-        JPanel griglia = new JPanel(new GridLayout(8, 2, 0, 5));
+        JPanel griglia = new JPanel(new GridLayout(9, 2, 0, 5));
         griglia.setBackground(Color.WHITE); 
         
         // Creazione del PannelloSottostante
@@ -69,7 +70,6 @@ public class Schermata1 extends JFrame
         linguaIT.setBackground(Color.WHITE);
         linguaEN = new JRadioButton("English", false); 
         linguaEN.setBackground(Color.WHITE);
-        labelLingua = new JLabel("Lingua"); 
         
         fondo1.add(linguaEN); 
         fondo1.add(linguaIT); 
@@ -84,6 +84,7 @@ public class Schermata1 extends JFrame
         griglia.add(labelNome);
         
         fieldNome = new JTextField(15); 
+        fieldNome.setHorizontalAlignment(JTextField.CENTER);
         griglia.add(fieldNome); 
         
         // inserimento cognome
@@ -92,6 +93,7 @@ public class Schermata1 extends JFrame
         griglia.add(labelCognome);
         
         fieldCognome = new JTextField(15); 
+        fieldCognome.setHorizontalAlignment(JTextField.CENTER);
         griglia.add(fieldCognome);
         
         // inserimento sesso
@@ -100,21 +102,27 @@ public class Schermata1 extends JFrame
         griglia.add(labelSesso);
         
         sessoTendina = new JComboBox();
+        ((JLabel)sessoTendina.getRenderer()).setHorizontalAlignment(SwingConstants.CENTER); // // imposta i mesi con allineamento centrale
+        
         griglia.add(sessoTendina);
         
-        // inserimento provincia
-        labelProvincia = new JLabel(""); 
-        labelProvincia.setForeground(Color.black);
-        griglia.add(labelProvincia); 
-        fieldProvincia = new JTextField(15); 
-        griglia.add(fieldProvincia);
+        // inserimento comune di nascita
+        labelComune = new JLabel(""); 
+        labelComune.setForeground(Color.black);
+        griglia.add(labelComune); 
         
+        fieldComune = new JTextField(15); 
+        fieldComune.setHorizontalAlignment(JTextField.CENTER);
+        griglia.add(fieldComune);
+        
+                
         // inserimento giorno
         labelGiorno = new JLabel(""); 
         labelGiorno.setForeground(Color.black);
         griglia.add(labelGiorno); 
         
         fieldGiorno = new JTextField(15); 
+        fieldGiorno.setHorizontalAlignment(JTextField.CENTER);
         griglia.add(fieldGiorno);
         
         // inserimento mese
@@ -123,6 +131,7 @@ public class Schermata1 extends JFrame
         labelMese.setForeground(Color.black);
         
         mesiTendina = new JComboBox(mesiIt);
+        ((JLabel)mesiTendina.getRenderer()).setHorizontalAlignment(SwingConstants.CENTER); // imposta i mesi con allineamento centrale
         griglia.add(mesiTendina);
         
         // inserimento anno
@@ -131,12 +140,15 @@ public class Schermata1 extends JFrame
         labelAnno.setForeground(Color.black);
         
         fieldAnno = new JTextField(15); 
+        fieldAnno.setHorizontalAlignment(JTextField.CENTER);
         griglia.add(fieldAnno);
         
         bottoneLista = new JButton(""); 
+        bottoneLista.setIcon(new ImageIcon(new ImageIcon("lista.png").getImage().getScaledInstance(20, 20, Image.SCALE_DEFAULT)));
         
         // bottone per l'ottenimento del codice
         button1 = new JButton(""); 
+        button1.setIcon(new ImageIcon(new ImageIcon("search.png").getImage().getScaledInstance(25, 25, Image.SCALE_DEFAULT)));
         
         // codice fiscale
         fieldCodice = new JTextField(20);
@@ -144,6 +156,7 @@ public class Schermata1 extends JFrame
         fieldCodice.setBackground(Color.LIGHT_GRAY);
         
         bottonePulizia = new JButton(""); 
+        bottonePulizia.setIcon(new ImageIcon(new ImageIcon("clean2.png").getImage().getScaledInstance(20, 20, Image.SCALE_DEFAULT)));
         setLabels("italian");
             
         
@@ -177,13 +190,26 @@ public class Schermata1 extends JFrame
                 ls.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
                 ls.setSize(500, 400);
                 ls.centreWindow(ls);
-                ls.setResizable(false);
+                ls.setResizable(true);
                 ls.setTitle("CodiceFiscale | Stefano Valloncini | 4CI - 2018/2019");
                 ls.setVisible(true);
             }
         });
        
         
+        // permette di usare invio al posto di cliccare sul pulsante
+        this.getRootPane().getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke(KeyEvent.VK_ENTER,0),"clickButton");
+
+        this.getRootPane().getActionMap().put("clickButton", new AbstractAction()
+        {
+        public void actionPerformed(ActionEvent ae)
+        {
+    button1.doClick();
+    System.out.println("Generate button cliccato");
+        }
+    });
+
+
         // selezione della lingua
         LinguaIT italiano = new LinguaIT(); 
         linguaIT.addItemListener(italiano);
@@ -210,7 +236,7 @@ public class Schermata1 extends JFrame
         descrizione.removeAll();
         labelNome.removeAll();
         labelCognome.removeAll();
-        labelProvincia.removeAll();
+        labelComune.removeAll();
         labelGiorno.removeAll();
         labelAnno.removeAll();
         labelMese.removeAll();
@@ -224,36 +250,39 @@ public class Schermata1 extends JFrame
                     setTitle("CodiceFiscale | Stefano Valloncini | 4CI - 2018/2019"); 
                     labelNome.setText("              Nome:");
                     labelCognome.setText("              Cognome:");
-                    labelProvincia.setText("              Comune: "); 
+                    labelComune.setText("              Provincia:");
+                    labelComune.setText("              Comune: "); 
                     labelGiorno.setText("              Giorno: ");
                     labelAnno.setText("              Anno: ");
                     labelSesso.setText("              Genere: ");
                     labelMese.setText("              Mese: ");
                     bottonePulizia.setText("Pulizia");
                     bottoneLista.setText(" Lista  "); 
+                    
                     DefaultComboBoxModel sessoIT = new DefaultComboBoxModel(sessiIt);
                     sessoTendina.setModel(sessoIT);
                     DefaultComboBoxModel meseIT = new DefaultComboBoxModel(mesiIt);
                     mesiTendina.setModel(meseIT);
-                    button1.setText("Calcola il codice fiscale!");
+                    button1.setText("Trova il tuo codice!");
                     break; 
                 case "english":
                     descrizione.setText("Welcome to the Fiscal Code Calculator!");
                     setTitle("FiscalCode | Stefano Valloncini | 4CI - 2018/2019"); 
                     labelNome.setText("              Name:");
                     labelCognome.setText("              Surname:");
-                    labelProvincia.setText("              City: "); 
+                    labelComune.setText("              City: "); 
                     labelGiorno.setText("              Day: ");
                     labelAnno.setText("              Year: ");
                     labelSesso.setText("              Gender: ");
                     labelMese.setText("              Month: ");
                     bottonePulizia.setText(" Clean ");
                     bottoneLista.setText("List"); 
+                    
                     DefaultComboBoxModel sessoENG = new DefaultComboBoxModel(sessiEng);
                     sessoTendina.setModel(sessoENG);
                     DefaultComboBoxModel meseENG = new DefaultComboBoxModel(mesiEng);
                     mesiTendina.setModel(meseENG);
-                    button1.setText("Calculate the fiscal code!");
+                    button1.setText("Find your code!");
                     break; 
             }
     }
@@ -262,7 +291,7 @@ public class Schermata1 extends JFrame
     {
         fieldNome.setText("");
         fieldCognome.setText("");
-        fieldProvincia.setText(""); 
+        fieldComune.setText(""); 
         fieldGiorno.setText("");
         fieldAnno.setText("");
         fieldCodice.setText("");
@@ -298,6 +327,7 @@ public class Schermata1 extends JFrame
         }
     }
     
+    
     private class event implements ActionListener
     {
         public void actionPerformed(ActionEvent e)
@@ -310,15 +340,18 @@ public class Schermata1 extends JFrame
             String cognome = fieldCognome.getText().trim(); 
             String giorno = fieldGiorno.getText().trim();
             String anno = fieldAnno.getText().trim(); 
-            String provincia = fieldProvincia.getText().trim(); 
+            String comune = fieldComune.getText().trim(); 
             String sesso = (String) sessoTendina.getSelectedItem();
             String mese = (String) mesiTendina.getSelectedItem(); 
             
-            if(nome.length() > 0 && cognome.length() > 0 && (giorno.length() > 0 && Integer.parseInt(giorno) < 31) && mese.length() > 0 && (anno.length() > 0 && Integer.parseInt(anno) < 2200) && sesso.length() > 0)
-            {
+            String codicefiscale = ""; 
+            
+            if(nome.length() > 0 && cognome.length() > 0 && (giorno.length() > 0 && Integer.parseInt(giorno) < 31) && mese.length() > 0 && (anno.length() > 0 && Integer.parseInt(anno) < 2200) && sesso.length() > 0 && comune.length() > 0)
+            {   
                 try 
                 {   
-                    String codicefiscale = CODICEFISCALE.creaOggetti(nome, cognome, giorno, mese, anno, provincia, sesso);
+                    codicefiscale = CODICEFISCALE.creaOggetti(nome, cognome, giorno, mese, anno, comune, sesso);
+                    
                     BufferedWriter writer = new BufferedWriter(new FileWriter("codicifiscali.txt", true)); // con true non elimina il contenuto ogni volta che viene aggiunto qualcosa
                     
                     String nome_temp = nome.toUpperCase(); 
@@ -333,6 +366,7 @@ public class Schermata1 extends JFrame
                     fieldCodice.setHorizontalAlignment(JTextField.CENTER);
                     descrizione.setForeground(new Color(238, 130, 238));
                     fieldCodice.setText(codicefiscale); 
+                    fieldCodice.setFont(new Font("Dialog", Font.BOLD + Font.ITALIC, 15));
                     fieldCodice.setBackground(new Color(238, 130, 238));
                     
                     writer.close(); 
@@ -341,7 +375,6 @@ public class Schermata1 extends JFrame
                 {
                     Logger.getLogger(Schermata1.class.getName()).log(Level.SEVERE, null, ex);
                 }
-
             }
             
             else if(linguaProgramma.equalsIgnoreCase("english"))
