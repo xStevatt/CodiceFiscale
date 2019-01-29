@@ -16,16 +16,24 @@ public class CodiceComune
         
         Scanner reader = new Scanner(new File("codici_catastali.txt")); 
         
-        comune = " " + comune + " "; 
-        comune = comune.toUpperCase(); 
+        comune = comune.toUpperCase();
+        
+        String temp = ""; 
+        String temp2 = ""; 
         
         while(reader.hasNext())
-        {
-            String temp = reader.nextLine(); 
-            
-            if(temp.contains(comune))
-            {   
-                return temp.substring(0, 5); 
+        {   
+            try
+            {
+                temp = reader.nextLine(); 
+                temp2 = temp.substring(4, 5 + (comune.length()));
+                
+                if(temp2.contains(comune))
+                    return temp.substring(0, 5); 
+            }
+            catch(Exception e)
+            {
+                continue; 
             }
         }
         

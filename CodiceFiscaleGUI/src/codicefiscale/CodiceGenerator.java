@@ -10,7 +10,7 @@ import java.io.IOException;
 public class CodiceGenerator
 {   
     
-    public String creaOggetti(String nome, String cognome, String giorno, String mese, String anno, String provincia, String sesso) throws FileNotFoundException, IOException 
+    public String creaOggetti(String nome, String cognome, String giorno, String mese, String anno, String comune, String sesso) throws FileNotFoundException, IOException 
     {   
         // questo metodo crea gli oggetti, ognuno dei quali rappresenta una parte del codice fiscale
         // salva in una variabile nome, cognome ecc., che poi verrano salvati su file su richiesta
@@ -31,7 +31,7 @@ public class CodiceGenerator
         String $5 = g.workOnGiorno(giorno, sesso); 
         
         CodiceComune com = new CodiceComune(); // calcolo cifre comune nascita
-        String $6 = com.workOnCodice(provincia); 
+        String $6 = com.workOnCodice(comune); 
         
         CifraControllo cf = new CifraControllo(); // calcolo cifra fi controllo
         String $7 = cf.calcCodice($1 + $2 + $3 + $4 + $5 + $6); 

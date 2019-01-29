@@ -12,7 +12,7 @@ public class CodiceFiscale
         Schermata1 gui = new Schermata1(); 
         
         gui.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        gui.setSize(500, 400);
+        gui.setSize(525, 450);
         gui.centreWindow(gui);
         gui.setResizable(false);
         gui.setTitle("CodiceFiscale | Stefano Valloncini | 4CI - 2018/2019");
