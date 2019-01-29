@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 package GeneratoreGrafica;
 import javax.swing.JFrame;
 
@@ -19,3 +20,26 @@ public class CodiceFiscale
         gui.setVisible(true);
     }
 }
+=======
+package GeneratoreGrafica;
+import javax.swing.JFrame;
+
+/**
+ * @author Stefano Valloncini aka xStevatt
+ */
+
+public class CodiceFiscale 
+{
+    public static void main(String[] args) 
+    {   
+        Schermata1 gui = new Schermata1(); 
+        
+        gui.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        gui.setSize(525, 450);
+        gui.centreWindow(gui);
+        gui.setResizable(false);
+        gui.setTitle("CodiceFiscale | Stefano Valloncini | 4CI - 2018/2019");
+        gui.setVisible(true);
+    }
+}
+>>>>>>> ba623b79c8747c23899031d39e11121590622b1d
